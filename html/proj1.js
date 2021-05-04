@@ -1,3 +1,13 @@
+function check(cname,cvalue){
+	var pass = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,45}$/;
+/*minimum of 8 charactes, maximum of 45. Looking for at least one lowercase, uppercase, number, and special character*/
+	if(cvalue.value.match(pass)) {
+	return true;
+	}
+	else {
+	return false;
+}
+}
 function clearCookies(){
 	var cookies = document.cookie.split(";");
 	for (var i = 0; i < cookies.length; i++){
