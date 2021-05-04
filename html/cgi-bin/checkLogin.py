@@ -4,9 +4,10 @@
 import mysql.connector
 import json
 import cgi
-import webbrowser
+from mysql.connector.errors import Error
+import hashlib
+import os
 from http import cookies
-
 
 def connectToDb(host,user,password,database):
 	try:
@@ -27,8 +28,13 @@ def checkLogin(dbconnection):
 		form = cgi.FieldStorage()
 		username = form.getvalue("username")
 		password = form.getvalue("password")
+		salt = b'zaqwsxcderfvbgty'
+		hashedpass = password.encode()
+		hashedpassword =  hashlib.pbkdf2_hmac("sha256", hashedpass, salt, 100000)
+		byte_array = hashedpassword
+		hashedpassword = byte_array.hex()
 		mycursor = dbconnection.cursor()
-		sql = 'SELECT * FROM Users WHERE (Username = "%s" AND Pass = "%s")'%(username,password)
+		sql = 'SELECT * FROM Users WHERE (Username = "%s" AND Pass = "%s")'%(username,hashedpassword)
 		#vals = (username, password)
 		mycursor.execute(sql)
 		result = mycursor.fetchone()
@@ -41,7 +47,7 @@ def checkLogin(dbconnection):
 			print('  </head>')
 			print('</html>')
 			exit(1)
-		elif result[0] == username and result[1] == password:
+		elif result[0] == username and result[1] == hashedpassword:
 			cookie = cookies.SimpleCookie()
 			cookie["User"] = username
 			cookie["LoggedIn"] = 'True'
