@@ -1,0 +1,126 @@
+<!-- index.html welcome page for project --> 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script> if (top != self){
+		top.location = self.location; }</script>
+  <title>Message Board</title> <!--Gives title on tab-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<div class="hero-image">
+	<div class="hero-text">
+	  <h1 style="font-size:80px">Welcome</h1>
+	  <h2 style="font-size:30px">Login or sign-up to join our member's only message board</h2>
+	</div>
+  </div>
+<style>
+	body, html {
+	height: 100%;
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+	}
+	.hero-image {
+	background-image: linear-gradient(rgba(140, 139, 212, 0.555), rgba(20, 18, 18, 0.527)), url("https://i.pinimg.com/originals/a9/12/25/a9122539bc17f0b49c3664cf0cf5e43a.jpg");
+	height: 50%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+	}
+
+	.hero-text {
+	text-align: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: white;
+	}
+
+	body{
+		margin:0;
+		font-family: Georgia, Times, 'Times New Roman', serif;
+		background-color: rgba(179, 194, 228, 0.863);
+	}
+	.topnavbar {
+		overflow:hidden;
+		background-color:lightsteelblue;
+		text-decoration-color: white;
+	}
+	.topnavbar a{
+		float: left;
+		color: white;
+		text-align: center;
+		padding: 10px 10px;
+		text-decoration:white;
+		font-size: 25px;
+	}
+	.topnavbar a:hover {
+		background-color: lightsteelblue;
+		color: white;
+	}
+	hr.dashed {
+  	border-top: 3px dashed rgb(51, 106, 179);
+	}
+	
+</style>
+<nav class="navbar sticky-top navbar-expand-lg navbar-light" style="background-color: rgba(159, 179, 223, 0.863);">
+	<a class="navbar-brand" href="index.html">Home</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+	  <span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarNavDropdown">
+	  <ul class="navbar-nav">
+		<li class="nav-item">
+			<a class="nav-link" href="login.html">Login</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="signup.html">Sign-Up</a>
+		</li>
+	  </ul>
+	</div>
+  </nav>
+<body>
+
+	<div class="container py-4">
+		<h2 class="h4 font-weight-bold">-Login or Sign-Up Below-</h2>
+		<div id="login/sign-up" >
+			<div id="wrap">
+				<div id="signup">
+					<form action="/cgi-bin/updatedsaveUser.py" method = "GET"> 
+						<h1>Not a Member? Sign up Below</h1> 
+						<p>Password Requirements: Minimum length of 8, maximum length of 45. One uppercase letter, lowercase letter, one numbers, and one special character.</p>
+						<p>
+							<label for="name" class="name" >Enter your name </label>
+							<input id="name" maxlength ="45" name="name" required="required" type="text" placeholder="take care tony"/>
+						</p>
+						<p> 
+							<label for="usersignup" class="username" >Enter your username</label>
+							<input id="usersignup" name="usernamesignup"  maxlength ="45" required="required" type="text" placeholder="Tony1234" />
+						</p>
+						<p>
+							<label for="pwdsignup" class="pwd" >Enter your password </label>
+							<input id="pwdsignup" name="pwsignup" minlength="8" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,45}$" maxlength="45" required="required" type="password" placeholder="iLuvsY306!"/>
+						</p>
+						
+						<p> 
+							<label for="pwdsignupconfirm" class="passwd">Please re-enter your password </label>
+							<input id="pwdsignupconfirm" name="pwdsignupconfirm" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,45}$"required="required" maxlength = "45" type="password" placeholder="iLuvsY306!"/>
+						</p>
+						<p class="signin button"> 
+							<input type="submit" value="Sign up"/> 
+						</p>
+					</form>
+				</div>
+				
+			</div>
+		</div>  
+	</div>
+</body>
+</html>
