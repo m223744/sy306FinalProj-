@@ -68,6 +68,73 @@
 	hr.dashed {
   	border-top: 3px dashed rgb(51, 106, 179);
 	}
+
+	.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
 	
 </style>
 <nav class="navbar sticky-top navbar-expand-lg navbar-light" style="background-color: rgba(159, 179, 223, 0.863);">
@@ -92,7 +159,7 @@
 		<div id="login/sign-up" >
 			<div id="wrap">
 				<div id="login">
-					<form  action="/cgi-bin/checkLogin.py"> <!-- update this--> 
+					<form id = "login_form" action = "/cgi-bin/checkLogin.py"> <!-- update this--> 
 						<h1>Already a Member? Log in Below</h1>
 						<p> 
 							<label for="username" class="uname"> Enter your username </label>
@@ -106,11 +173,34 @@
 							<input type="checkbox" name="savelogin" id="savelogin" value="savelogin" /> 
 							<label for="savelogin">Keep me logged in</label> <!-- can save this for cookie-->
 						</p>
-						<p class="loginbutton"> 
-							<input type="submit" value="Login"/> 
-						</p>
+						<input style="text-align: center;" class="open-button" onclick="Captcha_verify()" value="login" required>  
+						
 					</form>
 				</div>
+				
+
+
+<script>
+	var randint = Math.floor((Math.random()*1000000));
+	console.log(randint)
+</script>
+<script>
+	function Captcha_verify() {
+		CaptchaVerify = Number(prompt("Please verify your humanity by entering the following number: " + randint));
+		if (CaptchaVerify == randint) {
+			console.log("CAPTCHA SUCCESS")
+			document.getElementById("login_form").submit()
+		} else {
+			console.log("CAPTCHA FAILED")
+			alert("CAPTCHA FAILURE")
+			location.reload()
+		}
+
+	}
+</script>
+
 
 </body>
 </html>
+
+<!-- "/cgi-bin/checkLogin.py" -->

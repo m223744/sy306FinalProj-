@@ -89,28 +89,29 @@
 <body>
 
 	<div class="container py-4">
-		<h2 class="h4 font-weight-bold">- Login or Sign-Up Below-</h2>
+		<h2 class="h4 font-weight-bold">-Login or Sign-Up Below-</h2>
 		<div id="login/sign-up" >
 			<div id="wrap">
 				<div id="signup">
 					<form action="/cgi-bin/updatedsaveUser.py" method = "GET"> 
 						<h1>Not a Member? Sign up Below</h1> 
+						<p>Password Requirements: Minimum length of 8, maximum length of 45. One uppercase letter, lowercase letter, one numbers, and one special character.</p>
 						<p>
 							<label for="name" class="name" >Enter your name </label>
 							<input id="name" maxlength ="45" name="name" required="required" type="text" placeholder="take care tony"/>
 						</p>
 						<p> 
 							<label for="usersignup" class="username" >Enter your username</label>
-							<input id="usersignup" name="usernamesignup" maxlength = "45" required="required" type="text" placeholder="Tony1234" />
+							<input id="usersignup" name="usernamesignup"  maxlength ="45" required="required" type="text" placeholder="Tony1234" />
 						</p>
 						<p>
 							<label for="pwdsignup" class="pwd" >Enter your password </label>
-							<input id="pwdsignup" name="pwsignup" maxlength = "45" required="required" type="password" placeholder="iLuvsY306!"/>
+							<input id="pwdsignup" name="pwsignup" minlength="8" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,45}$" maxlength="45" required="required" type="password" placeholder="iLuvsY306!"/>
 						</p>
 						
 						<p> 
 							<label for="pwdsignupconfirm" class="passwd">Please re-enter your password </label>
-							<input id="pwdsignupconfirm" name="pwdsignupconfirm" required="required" maxlength = "45" type="password" placeholder="iLuvsY306!"/>
+							<input id="pwdsignupconfirm" name="pwdsignupconfirm" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,45}$"required="required" maxlength = "45" type="password" placeholder="iLuvsY306!"/>
 						</p>
 						<p class="signin button"> 
 							<input type="submit" value="Sign up"/> 
